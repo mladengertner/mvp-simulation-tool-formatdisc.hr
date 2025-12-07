@@ -3,9 +3,10 @@
 import { useState } from "react";
 import { SimulationForm } from "@/components/simulation-form";
 import { SimulationResults } from "@/components/simulation-results";
+import { SimulationResults as SimulationResultsType } from "@/lib/simulation";
 
 export default function HomePage() {
-  const [results, setResults] = useState<any>(null);
+  const [results, setResults] = useState<SimulationResultsType | null>(null);
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-purple-50 to-white dark:from-gray-900 dark:to-gray-800">

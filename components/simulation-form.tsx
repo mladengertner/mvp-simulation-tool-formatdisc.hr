@@ -1,10 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { SimulationInput, runSimulation } from "@/lib/simulation";
+import { SimulationInput, SimulationResults, runSimulation } from "@/lib/simulation";
 
 interface SimulationFormProps {
-  onSubmit: (results: any) => void;
+  onSubmit: (results: SimulationResults) => void;
 }
 
 export function SimulationForm({ onSubmit }: SimulationFormProps) {
@@ -27,7 +27,10 @@ export function SimulationForm({ onSubmit }: SimulationFormProps) {
     onSubmit(results);
   };
 
-  const updateField = (field: keyof SimulationInput, value: any) => {
+  const updateField = <K extends keyof SimulationInput>(
+    field: K,
+    value: SimulationInput[K]
+  ) => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 

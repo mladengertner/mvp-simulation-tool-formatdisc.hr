@@ -47,17 +47,18 @@ export function runSimulation(input: SimulationInput): SimulationResults {
   let breakEvenMonth: number | null = null;
 
   // Generate 12-month projections
+  let previousUsers = 0;
   for (let month = 1; month <= 12; month++) {
     const users = Math.round(
       input.initialUsers * Math.pow(1 + input.monthlyGrowthRate / 100, month - 1)
     );
     const revenue = users * input.monthlyPrice;
-    const acquisitionCost = month === 1 
-      ? input.initialUsers * input.customerAcquisitionCost 
-      : Math.round(users * (input.monthlyGrowthRate / 100)) * input.customerAcquisitionCost;
+    const newUsers = month === 1 ? input.initialUsers : users - previousUsers;
+    const acquisitionCost = newUsers * input.customerAcquisitionCost;
     const costs = input.monthlyOperatingCost + acquisitionCost;
     const profit = revenue - costs;
     cumulativeProfit += profit;
+    previousUsers = users;
 
     if (breakEvenMonth === null && cumulativeProfit >= 0) {
       breakEvenMonth = month;

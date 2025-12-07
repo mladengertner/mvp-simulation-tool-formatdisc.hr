@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { SimulationResults as Results } from "@/lib/simulation";
 import jsPDF from "jspdf";
 
@@ -9,8 +10,14 @@ interface SimulationResultsProps {
 }
 
 export function SimulationResults({ results, onReset }: SimulationResultsProps) {
+  const [isGeneratingPDF, setIsGeneratingPDF] = useState(false);
+
   const generatePDF = () => {
-    const doc = new jsPDF();
+    setIsGeneratingPDF(true);
+    
+    // Use setTimeout to allow UI to update before blocking operation
+    setTimeout(() => {
+      const doc = new jsPDF();
     
     // Title
     doc.setFontSize(20);
@@ -69,6 +76,8 @@ export function SimulationResults({ results, onReset }: SimulationResultsProps) 
     doc.text("www.formatdisc.hr | info@formatdisc.hr", 20, 285);
     
     doc.save(`${results.input.ideaName.replace(/\s+/g, '-')}-simulation-report.pdf`);
+    setIsGeneratingPDF(false);
+    }, 100);
   };
 
   const verdictColorClass = 
@@ -203,9 +212,10 @@ export function SimulationResults({ results, onReset }: SimulationResultsProps) 
       <div className="text-center">
         <button
           onClick={generatePDF}
-          className="bg-purple-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-purple-700 transition shadow-lg"
+          disabled={isGeneratingPDF}
+          className="bg-purple-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-purple-700 transition shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          📄 Export PDF Report
+          {isGeneratingPDF ? "Generating PDF..." : "📄 Export PDF Report"}
         </button>
       </div>
     </div>
