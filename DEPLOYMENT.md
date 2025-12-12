@@ -12,30 +12,49 @@ This guide will help you deploy the FORMATDISC MVP Simulation Tool to production
 
 ## 📦 Quick Deploy to Vercel
 
-### Option 1: Automatic Deployment (Recommended)
+### Option 1: GitHub Actions CI/CD (Recommended)
 
-1. **Push to GitHub**
-   ```bash
-   git push origin main
-   ```
+The repository includes automated deployment via GitHub Actions. Every push to `main` triggers a production deployment, and pull requests create preview deployments.
 
-2. **Connect to Vercel**
+**Setup Required Secrets:**
+
+1. Go to your GitHub repository → Settings → Secrets and variables → Actions
+2. Add the following secrets:
+   - `VERCEL_TOKEN` - Generate at [vercel.com/account/tokens](https://vercel.com/account/tokens)
+   - `VERCEL_ORG_ID` - Found in Vercel → Settings → General
+   - `VERCEL_PROJECT_ID` - Found in Vercel Project → Settings → General
+
+**Deploy:**
+```bash
+git push origin main
+```
+
+The GitHub Actions workflow will:
+- ✅ Install dependencies
+- ✅ Build the project
+- ✅ Run linter
+- ✅ Deploy to Vercel production (on main branch)
+- ✅ Deploy preview (on pull requests)
+
+### Option 2: Vercel Dashboard
+
+1. **Connect to Vercel**
    - Go to [vercel.com](https://vercel.com)
    - Click "New Project"
    - Import your GitHub repository: `mladengertner/mvp-simulation-tool-formatdisc.hr`
    - Vercel will auto-detect Next.js settings
 
-3. **Configure Domain**
+2. **Configure Domain**
    - In Vercel dashboard, go to Project Settings → Domains
    - Add custom domain: `www.formatdisc.hr`
    - Follow Vercel's DNS configuration instructions
 
-4. **Deploy**
+3. **Deploy**
    - Click "Deploy"
    - Wait 2-3 minutes for build to complete
    - Your site is live! 🎉
 
-### Option 2: Vercel CLI
+### Option 3: Vercel CLI
 
 ```bash
 # Install Vercel CLI

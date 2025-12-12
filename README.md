@@ -87,7 +87,28 @@ Open your browser at:
 
 ## **Deployment**
 
-### **Vercel (Recommended)**
+### **Automated CI/CD (GitHub Actions)**
+
+The repository includes automated deployment via GitHub Actions:
+
+- **Production Deploys**: Automatic deployment to Vercel on every push to `main`
+- **Preview Deploys**: Automatic preview deployments for all pull requests
+- **Build Validation**: Runs build and lint checks before deployment
+
+**Setup Requirements:**
+1. Configure GitHub Secrets (Settings → Secrets → Actions):
+   - `VERCEL_TOKEN` - Vercel API token
+   - `VERCEL_ORG_ID` - Vercel organization ID
+   - `VERCEL_PROJECT_ID` - Vercel project ID
+
+2. Push to main:
+   ```bash
+   git push origin main
+   ```
+
+For detailed deployment instructions, see [DEPLOYMENT.md](DEPLOYMENT.md).
+
+### **Manual Deployment (Vercel)**
 
 1. Push repository to GitHub  
 2. Connect repo to Vercel  
