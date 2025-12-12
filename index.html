@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FORMATDISC - MVP Simulation Tool Demo</title>
+    <title>FORMATDISC - MVP Simulation Tool</title>
     <meta name="description" content="AI-powered MVP simulator for startup validation. Validate - Design - Launch - Pitch.">
     
     <!-- Tailwind CSS -->
@@ -531,7 +531,8 @@
 
                 <div>
                     <h3 class="font-display text-2xl font-bold mb-6">Send a Message</h3>
-                    <form class="space-y-4">
+                    <p class="text-sm text-gray-500 mb-4">This is a demo form. For actual inquiries, please contact us directly.</p>
+                    <form class="space-y-4" onsubmit="event.preventDefault(); alert('This is a demo form. Please contact us at info@formatdisc.hr');">
                         <div>
                             <label class="block text-sm font-semibold mb-2">Name</label>
                             <input type="text" class="w-full bg-gray-900/50 border border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:border-purple-600 transition-colors" placeholder="Your name">
@@ -599,7 +600,7 @@
             </div>
             <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
                 <p class="text-gray-400 text-sm">
-                    © 2025 FORMATDISC, vl. Mladen Gertner. All rights reserved.
+                    © <span id="year"></span> FORMATDISC, vl. Mladen Gertner. All rights reserved.
                 </p>
                 <div class="flex space-x-6 mt-4 md:mt-0">
                     <a href="#" class="text-gray-400 hover:text-white transition-colors">
@@ -623,6 +624,11 @@
     </footer>
 
     <script>
+        // Set current year
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('year').textContent = new Date().getFullYear();
+        });
+        
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
