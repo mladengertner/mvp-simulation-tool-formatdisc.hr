@@ -23,16 +23,20 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '18.x'
           cache: 'npm'
 
       - name: Install dependencies
+        # Using --legacy-peer-deps due to peer dependency conflicts in some UI packages
+        # This is documented as the recommended approach in DEPLOYMENT.md
         run: npm install --legacy-peer-deps
 
       - name: Build project
         run: npm run build
 
       - name: Run linter
+        # Allow linter to continue on error to match build configuration
+        # which ignores ESLint errors during builds (see next.config.mjs)
         run: npm run lint
         continue-on-error: true
 
