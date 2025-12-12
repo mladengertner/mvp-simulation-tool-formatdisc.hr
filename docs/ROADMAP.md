@@ -254,25 +254,27 @@ Build the world's most accessible and powerful MVP validation platform for entre
 
 ## Community Requests
 
-### Most Requested Features
+### Top Requested Features
 
-1. **Save My Work** (187 requests)
-   → Implementing in v1.1.0
+Features prioritized based on user feedback and business value:
 
-2. **Croatian Language** (154 requests)
-   → Implementing in v1.2.0
+1. **Save My Work**
+   → Implementing in v1.1.0 - High demand for simulation persistence
 
-3. **Share with Team** (128 requests)
-   → Implementing in v1.3.0
+2. **Croatian Language**
+   → Implementing in v1.2.0 - Key market requirement
 
-4. **Longer Forecasts** (98 requests)
-   → Implementing in v1.1.0
+3. **Share with Team**
+   → Implementing in v1.3.0 - Collaboration is essential
 
-5. **Mobile App** (76 requests)
-   → Planned for v2.0
+4. **Longer Forecasts**
+   → Implementing in v1.1.0 - Users want 24/36 month projections
 
-6. **Compare Scenarios** (65 requests)
-   → Implementing in v1.1.0
+5. **Mobile App**
+   → Planned for v2.0 - Native mobile experience
+
+6. **Compare Scenarios**
+   → Implementing in v1.1.0 - Side-by-side analysis needed
 
 ### Submit a Feature Request
 
